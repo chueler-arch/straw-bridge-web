@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="ストローとテープで最強の橋をつくる、チームビルディング研修向け無料進行アプリ。">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <title>ストローブリッジ・チャレンジ｜チームビルディング研修</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700&family=Noto+Sans+JP:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/mobile-fixes.css">
+</head>
+<body>
+  <header class="app-header">
+    <button class="brand" id="homeBtn" type="button" aria-label="最初の画面へ"><span class="brand-mark">△</span><span>STRAW<br>BRIDGE</span></button>
+    <div class="progress"><span id="progressLabel">01 / 13</span><i><b id="progressBar"></b></i></div>
+    <div class="header-actions">
+      <button id="langBtn" type="button">EN</button>
+      <button id="soundBtn" type="button" aria-label="効果音">♪</button>
+      <button id="fullscreenBtn" type="button" aria-label="全画面表示">⛶</button>
+    </div>
+  </header>
+
+  <main id="deck">
+    <section class="slide hero is-active" data-title="START">
+      <div class="hero-copy">
+        <p class="eyebrow">TEAM BUILDING WORKSHOP</p>
+        <h1 data-ja="ストローブリッジ" data-en="Straw Bridge">ストローブリッジ</h1>
+        <h2 data-ja="チャレンジ！" data-en="Challenge!">チャレンジ！</h2>
+        <p class="hero-lead" data-ja="限られた資材で「最強の構造」を導き出せ。" data-en="Build the strongest structure with limited materials.">限られた資材で「最強の構造」を導き出せ。</p>
+        <div class="hero-actions"><button class="ghost-btn" id="setupBtn" type="button">⚙ <span data-ja="事前準備" data-en="Setup">事前準備</span></button><button class="primary-btn" data-next type="button"><span data-ja="チャレンジをはじめる" data-en="Start challenge">チャレンジをはじめる</span> →</button></div>
+      </div>
+      <div class="bridge-art" aria-hidden="true"><div class="bank left"></div><div class="bank right"></div><div class="bridge-deck"></div><div class="truss t1"></div><div class="truss t2"></div><div class="truss t3"></div><div class="truss t4"></div><div class="weight">1kg</div></div>
+    </section>
+
+    <section class="slide" data-title="MISSION">
+      <div class="split"><div><p class="eyebrow">TODAY'S MISSION</p><h2 data-ja="最も強い橋を、\nチームでつくる。" data-en="Build the strongest\nbridge together.">最も強い橋を、<br>チームでつくる。</h2><p class="lead" data-ja="ストローとテープだけで、20cmの間を自立して架ける橋を製作します。" data-en="Using only straws and tape, build a freestanding bridge across a 20 cm span.">ストローとテープだけで、20cmの間を自立して架ける橋を製作します。</p></div><div class="mission-card"><span>WIN CONDITION</span><strong data-ja="耐えた重量" data-en="Weight held">耐えた重量</strong><b>MAX</b><p data-ja="中央の容器におもりを入れ、最も重い重量に耐えたチームの勝利。" data-en="The team whose bridge holds the most weight wins.">中央の容器におもりを入れ、最も重い重量に耐えたチームの勝利。</p></div></div>
+    </section>
+
+    <section class="slide" data-title="TEAM">
+      <div class="slide-heading"><div><p class="eyebrow">TEAM ASSIGNMENT</p><h2 data-ja="チームを確認しよう。" data-en="Meet your team.">チームを確認しよう。</h2></div><button class="small-btn" id="shuffleBtn" type="button">↻ <span data-ja="メンバーを混ぜる" data-en="Shuffle members">メンバーを混ぜる</span></button></div>
+      <div class="teams-grid" id="teamsGrid"></div>
+    </section>
+
+    <section class="slide" data-title="MATERIALS">
+      <div class="slide-heading"><div><p class="eyebrow">MATERIAL CHECK</p><h2 data-ja="備品を確認しよう。" data-en="Check your materials.">備品を確認しよう。</h2></div><p data-ja="1チーム分です。すべて揃ったら次へ進みます。" data-en="Per team. Continue when every item is ready.">1チーム分です。すべて揃ったら次へ進みます。</p></div>
+      <div class="materials" id="materials">
+        <button type="button"><span>01</span><b data-ja="ストロー" data-en="Straws">ストロー</b><strong>30<small data-ja="本" data-en="">本</small></strong><i>✓</i></button>
+        <button type="button"><span>02</span><b data-ja="セロハンテープ" data-en="Tape">セロハンテープ</b><strong>1<small data-ja="巻" data-en=" roll">巻</small></strong><i>✓</i></button>
+        <button type="button"><span>03</span><b data-ja="ハサミ" data-en="Scissors">ハサミ</b><strong>2<small data-ja="丁" data-en="">丁</small></strong><i>✓</i></button>
+        <button type="button"><span>04</span><b data-ja="メジャー" data-en="Measuring tape">メジャー</b><strong>1<small data-ja="個" data-en="">個</small></strong><i>✓</i></button>
+        <button type="button"><span>05</span><b data-ja="S字フック・容器・おもり" data-en="Hook, container & weights">S字フック・容器・おもり</b><strong>1<small data-ja="式" data-en=" set">式</small></strong><i>✓</i></button>
+      </div>
+    </section>
+
+    <section class="slide rule-slide" data-title="RULES">
+      <div><p class="eyebrow">THREE RULES</p><h2 data-ja="守るのは、\n3つだけ。" data-en="Only three\nrules.">守るのは、<br><em>3つだけ。</em></h2></div>
+      <ol class="rule-list"><li><span>01</span><div><b data-ja="20cmを自立して架ける" data-en="Span 20 cm unaided">20cmを自立して架ける</b><p data-ja="橋は台の上に載せるだけ。台へテープで固定しません。" data-en="The bridge rests on the supports. Do not tape it down.">橋は台の上に載せるだけ。台へテープで固定しません。</p></div></li><li><span>02</span><div><b data-ja="結合はテープだけ" data-en="Join with tape only">結合はテープだけ</b><p data-ja="ストローに切り込みを入れて噛み合わせることは禁止です。" data-en="Do not notch and interlock the straws.">ストローに切り込みを入れて噛み合わせることは禁止です。</p></div></li><li><span>03</span><div><b data-ja="中央に吊り下げ位置をつくる" data-en="Make a central loading point">中央に吊り下げ位置をつくる</b><p data-ja="S字フックを通す隙間または軸を必ず設けます。" data-en="Include a gap or axle for the S-hook at the center.">S字フックを通す隙間または軸を必ず設けます。</p></div></li></ol>
+    </section>
+
+    <section class="slide" data-title="HINT">
+      <div class="split"><div><p class="eyebrow">STRUCTURE HINT</p><h2 data-ja="三角形は、\n力を分散する。" data-en="Triangles\nspread the load.">三角形は、<br><em>力を分散する。</em></h2><p class="lead" data-ja="ストローは曲げに弱く、押す・引く力には比較的強い素材です。三角形を組み合わせるトラス構造を試してみましょう。" data-en="Straws bend easily but work better in tension and compression. Try a truss made from triangles.">ストローは曲げに弱く、押す・引く力には比較的強い素材です。三角形を組み合わせるトラス構造を試してみましょう。</p></div><div class="truss-demo" aria-label="トラス構造の図"><span></span><span></span><span></span><span></span><span></span><span></span><b>LOAD</b></div></div>
+    </section>
+
+    <section class="slide" data-title="TEAMWORK">
+      <div class="slide-heading"><div><p class="eyebrow">TEAMWORK</p><h2 data-ja="強い橋は、\n強いチームから。" data-en="Strong bridges need\nstrong teams.">強い橋は、<br><em>強いチームから。</em></h2></div></div>
+      <div class="principles"><article><span>01</span><h3 data-ja="役割を固定しない" data-en="Keep roles flexible">役割を固定しない</h3><p data-ja="手の空いた人が状況を見て助け合う。" data-en="Notice what is needed and help each other.">手の空いた人が状況を見て助け合う。</p></article><article><span>02</span><h3 data-ja="議論より、まず試す" data-en="Test before debating">議論より、まず試す</h3><p data-ja="小さく組んで触り、強さを確かめる。" data-en="Build a small piece and feel how it behaves.">小さく組んで触り、強さを確かめる。</p></article><article><span>03</span><h3 data-ja="立場を越えて話す" data-en="Speak as equals">立場を越えて話す</h3><p data-ja="年齢や役職にこだわらずアイデアを出す。" data-en="Share ideas beyond age and job title.">年齢や役職にこだわらずアイデアを出す。</p></article></div>
+    </section>
+
+    <section class="slide dark timer-slide" data-title="STRATEGY">
+      <div><p class="eyebrow light">STRATEGY TIME</p><h2 data-ja="5分で、\n設計と役割を決める。" data-en="Plan and assign roles\nin five minutes.">5分で、<br><em>設計と役割を決める。</em></h2><ul><li data-ja="橋の形と荷重を受ける位置" data-en="Bridge shape and load path">橋の形と荷重を受ける位置</li><li data-ja="作る順番と役割分担" data-en="Build order and roles">作る順番と役割分担</li><li data-ja="最後の補強時間を確保" data-en="Reserve time for reinforcement">最後の補強時間を確保</li></ul></div><div class="timer-card" data-timer="strategy"><p>STRATEGY</p><strong class="timer-display">05:00</strong><div class="timer-track"><i></i></div><div><button data-reset-timer type="button">↺</button><button class="timer-toggle" type="button" data-ja="スタート" data-en="Start">スタート</button></div></div>
+    </section>
+
+    <section class="slide dark timer-slide" data-title="BUILD">
+      <div><p class="eyebrow light">BUILD TIME</p><h2 data-ja="製作開始。\n25分の真剣勝負。" data-en="Start building.\n25 minutes to win.">製作開始。<br><em>25分の真剣勝負。</em></h2><div class="milestones"><p><b>15:00</b><span data-ja="設計を終え、トラスを組み始める" data-en="Finish planning and begin the truss">設計を終え、トラスを組み始める</span></p><p><b>05:00</b><span data-ja="新規パーツを止め、補強と架橋テスト" data-en="Stop new parts; reinforce and test">新規パーツを止め、補強と架橋テスト</span></p></div></div><div class="timer-card accent" data-timer="build"><p>TIME REMAINING</p><strong class="timer-display">25:00</strong><div class="timer-track"><i></i></div><div><button data-reset-timer type="button">↺</button><button class="timer-toggle" type="button" data-ja="スタート" data-en="Start">スタート</button></div></div>
+    </section>
+
+    <section class="slide" data-title="MEASURE">
+      <div class="slide-heading"><div><p class="eyebrow">LOAD TEST</p><h2 data-ja="強度を計測しよう。" data-en="Test every bridge.">強度を計測しよう。</h2></div><p data-ja="中央の容器におもりを順に入れ、耐えられた総重量を入力します。" data-en="Add weights to the center and enter the total load held.">中央の容器におもりを順に入れ、耐えられた総重量を入力します。</p></div><div class="measure-grid" id="measureGrid"></div><button class="primary-btn results-btn" type="button" data-next><span data-ja="順位を見る" data-en="View results">順位を見る</span> →</button>
+    </section>
+
+    <section class="slide winner-slide" data-title="RESULTS">
+      <p class="eyebrow light">RESULTS</p><h2><span id="winnerName">TEAM A</span><br><em data-ja="おめでとう！" data-en="Congratulations!">おめでとう！</em></h2><div class="podium" id="podium"></div>
+    </section>
+
+    <section class="slide" data-title="REFLECTION">
+      <div class="split"><div><p class="eyebrow">REFLECTION / PDCA</p><h2 data-ja="つくった後が、\nいちばん大事。" data-en="Learning begins\nafter building.">つくった後が、<br><em>いちばん大事。</em></h2><p class="lead" data-ja="チームで振り返り、気づきを共有しましょう。" data-en="Reflect as a team and share what you learned.">チームで振り返り、気づきを共有しましょう。</p></div><div class="questions"><p><span>01</span><b data-ja="短い時間で、どう意見をまとめた？" data-en="How did you make decisions quickly?">短い時間で、どう意見をまとめた？</b></p><p><span>02</span><b data-ja="途中の問題に、どう軌道修正した？" data-en="How did you respond to problems?">途中の問題に、どう軌道修正した？</b></p><p><span>03</span><b data-ja="次に試すなら、何を変える？" data-en="What would you change next time?">次に試すなら、何を変える？</b></p></div></div>
+    </section>
+
+    <section class="slide finish" data-title="FINISH"><div><p class="eyebrow">CHALLENGE COMPLETE</p><h2 data-ja="おつかれさまでした！" data-en="Great work!">おつかれさまでした！</h2><p data-ja="今日の気づきを、次のチーム活動へ。" data-en="Carry today's learning into your next team challenge.">今日の気づきを、次のチーム活動へ。</p><button class="ghost-btn" id="restartBtn" type="button"><span data-ja="最初に戻る" data-en="Back to start">最初に戻る</span> ↺</button></div></section>
+  </main>
+
+  <footer class="nav-bar"><nav><a href="about.html" data-ja="このアプリについて" data-en="About">このアプリについて</a><a href="how-to-play.html" data-ja="遊び方" data-en="How to use">遊び方</a><a href="privacy.html" data-ja="プライバシー" data-en="Privacy">プライバシー</a><a href="terms.html" data-ja="利用規約" data-en="Terms">利用規約</a></nav><div><button id="prevBtn" type="button">←</button><button id="nextBtn" type="button"><span data-ja="次へ" data-en="Next">次へ</span> →</button></div></footer>
+
+  <dialog id="setupDialog"><form method="dialog"><header><div><p>BEFORE THE WORKSHOP</p><h2 data-ja="事前準備" data-en="Workshop setup">事前準備</h2></div><button value="close" aria-label="閉じる">×</button></header><div class="setup-body"><section><h3 data-ja="チーム・参加者" data-en="Teams & participants">チーム・参加者</h3><p data-ja="チーム名と参加者を入力してください。参加者は1行に1名です。" data-en="Enter team names and one participant per line.">チーム名と参加者を入力してください。参加者は1行に1名です。</p><div id="teamEditors"></div><button class="small-btn" id="addTeamBtn" type="button">＋ <span data-ja="チームを追加" data-en="Add team">チームを追加</span></button></section><section><h3 data-ja="時間設定" data-en="Timing">時間設定</h3><div class="settings-grid"><label><span data-ja="作戦会議" data-en="Strategy">作戦会議</span><input id="strategyMinutes" type="number" min="1" max="60"><small>min</small></label><label><span data-ja="製作時間" data-en="Build">製作時間</span><input id="buildMinutes" type="number" min="1" max="120"><small>min</small></label></div><p class="save-note" data-ja="設定と結果はこのブラウザに自動保存されます。" data-en="Settings and results are saved in this browser.">設定と結果はこのブラウザに自動保存されます。</p></section></div><footer><button class="primary-btn" id="saveSetupBtn" value="close"><span data-ja="準備完了" data-en="Save setup">準備完了</span></button></footer></form></dialog>
+  <div class="toast" id="toast" role="status"></div><div class="confetti" id="confetti" aria-hidden="true"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>

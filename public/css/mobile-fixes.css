@@ -1,0 +1,43 @@
+html,
+body {
+  overflow-x: hidden;
+}
+
+@media (max-width: 520px) {
+  .app-header {
+    gap: 8px;
+  }
+
+  .hero-actions,
+  .hero-actions button {
+    width: 100%;
+  }
+
+  .hero-actions button {
+    white-space: normal;
+  }
+
+  .bridge-art {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .header-actions #soundBtn,
+  .header-actions #fullscreenBtn {
+    display: none;
+  }
+
+  .progress {
+    position: absolute;
+    left: 50%;
+    margin: 0;
+    transform: translateX(-50%);
+  }
+
+  .header-actions {
+    position: absolute;
+    right: 14px;
+    flex: 0 0 auto;
+    margin: 0;
+  }
+}

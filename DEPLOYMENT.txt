@@ -1,0 +1,26 @@
+Straw Bridge Challenge：GitHubへのPushからCloudflare Pagesデプロイまで
+
+【初回公開】
+1. GitHubに straw-bridge-web という空のリポジトリを作成します。
+2. このフォルダでGitHubリポジトリを登録してPushします。
+   git remote add origin https://github.com/chueler-arch/straw-bridge-web.git
+   git push -u origin main
+3. Cloudflare Dashboardの Workers & Pages でGitHubリポジトリを接続します。
+4. 次のビルド設定を指定します。
+   - Production branch: main
+   - Framework preset: None
+   - Build command: 空欄
+   - Build output directory: public
+5. PagesプロジェクトのCustom domainsで strawbridge.sona-craft.com を追加します。
+
+【通常の更新】
+1. 変更内容を確認します。
+   git status --short
+   git diff --check
+2. 公開するファイルをステージしてコミットします。
+   git add -- public
+   git commit -m "変更内容を表すメッセージ"
+3. mainブランチをGitHubへPushします。
+   git push origin main
+4. Cloudflare PagesのDeploymentsで緑のチェックを確認します。
+5. https://strawbridge.sona-craft.com/ を確認します。
