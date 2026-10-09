@@ -1,0 +1,35 @@
+/* Cohesive desktop layouts for slides with illustrations */
+@media(min-width:851px){
+  .slide[data-title="MISSION"],.slide[data-title="MATERIALS"],.slide[data-title="RULES"],.slide[data-title="TEAMWORK"],.slide[data-title="MEASURE"],.slide[data-title="REFLECTION"]{width:100%;max-width:2200px;margin:0 auto;padding:96px clamp(42px,5vw,110px) 88px;column-gap:clamp(28px,3vw,64px);row-gap:clamp(18px,2.2vh,30px);align-items:stretch}
+  .slide[data-title="MISSION"].is-active,.slide[data-title="MATERIALS"].is-active,.slide[data-title="RULES"].is-active,.slide[data-title="TEAMWORK"].is-active,.slide[data-title="MEASURE"].is-active,.slide[data-title="REFLECTION"].is-active{display:grid}
+  .slide[data-title="MISSION"]::before,.slide[data-title="MATERIALS"]::before,.slide[data-title="RULES"]::before,.slide[data-title="TEAMWORK"]::before,.slide[data-title="MEASURE"]::before,.slide[data-title="REFLECTION"]::before{position:static;inset:auto;width:auto;height:auto;min-height:0;align-self:stretch;border-radius:3px;background-size:cover;opacity:1}
+
+  .slide[data-title="MISSION"]{grid-template-columns:minmax(420px,.82fr) minmax(580px,1.18fr);grid-template-rows:1fr;grid-template-areas:"mission-copy mission-art"}
+  .slide[data-title="MISSION"]::before{grid-area:mission-art;background-position:center}.slide[data-title="MISSION"] .split{display:contents}.slide[data-title="MISSION"] .split>div:first-child{grid-area:mission-copy;align-self:center}.slide[data-title="MISSION"] .mission-card{grid-area:mission-art;z-index:1;width:min(72%,620px);align-self:end;justify-self:end;margin:0 24px 24px;padding:30px 34px}.slide[data-title="MISSION"] .mission-card b{font-size:clamp(64px,7vw,118px)}
+
+  .slide[data-title="MATERIALS"]{grid-template-columns:minmax(440px,.82fr) minmax(600px,1.18fr);grid-template-rows:minmax(300px,1fr) auto;grid-template-areas:"materials-title materials-art" "materials-cards materials-cards"}
+  .slide[data-title="MATERIALS"]::before{grid-area:materials-art;background-position:center 43%}.slide[data-title="MATERIALS"] .slide-heading{grid-area:materials-title;display:block;align-self:center;margin:0;padding:0;max-width:720px}.slide[data-title="MATERIALS"] .slide-heading h2{font-size:clamp(42px,4.2vw,76px);white-space:nowrap;margin-bottom:22px}.slide[data-title="MATERIALS"] .slide-heading>p{max-width:640px;font-size:18px}.slide[data-title="MATERIALS"] .materials{grid-area:materials-cards;align-self:stretch;grid-template-columns:repeat(5,minmax(190px,1fr));gap:clamp(12px,1.2vw,22px)}.slide[data-title="MATERIALS"] .materials button{min-height:178px;padding:18px 20px}.slide[data-title="MATERIALS"] .materials button strong{font-size:40px}
+
+  .slide[data-title="RULES"]{grid-template-columns:minmax(540px,1fr) minmax(560px,.94fr);grid-template-rows:1fr;grid-template-areas:"rules-art rules-list"}
+  .slide[data-title="RULES"]::before{grid-area:rules-art;background-position:center top}.slide[data-title="RULES"]>div{grid-area:rules-art;z-index:1;align-self:start;width:auto!important;margin:38px 0 0 40px;max-width:420px}.slide[data-title="RULES"] .rule-list{grid-area:rules-list;width:100%;align-self:center;padding:14px 30px}.slide[data-title="RULES"] .rule-list li{grid-template-columns:62px 1fr;padding:20px 0}
+
+  .slide[data-title="TEAMWORK"]{grid-template-columns:minmax(430px,.78fr) minmax(620px,1.22fr);grid-template-rows:minmax(300px,1fr) auto;grid-template-areas:"teamwork-title teamwork-art" "teamwork-cards teamwork-cards"}
+  .slide[data-title="TEAMWORK"]::before{grid-area:teamwork-art;background-position:center 24%}.slide[data-title="TEAMWORK"] .slide-heading{grid-area:teamwork-title;align-self:center;display:block;min-height:0;margin:0;padding:0}.slide[data-title="TEAMWORK"] .principles{grid-area:teamwork-cards;align-self:stretch;gap:clamp(14px,1.5vw,26px)}.slide[data-title="TEAMWORK"] .principles article{padding:24px 28px}
+
+  .slide[data-title="MEASURE"]{grid-template-columns:minmax(460px,.82fr) minmax(600px,1.18fr);grid-template-rows:minmax(300px,1fr) auto auto;grid-template-areas:"measure-title measure-art" "measure-cards measure-cards" "measure-button measure-button"}
+  .slide[data-title="MEASURE"]::before{grid-area:measure-art;background-position:center 43%}.slide[data-title="MEASURE"] .slide-heading{grid-area:measure-title;align-self:center;display:block;min-height:0;margin:0;padding:0}.slide[data-title="MEASURE"] .measure-grid{grid-area:measure-cards;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}.slide[data-title="MEASURE"] .results-btn{grid-area:measure-button;margin:0 auto}
+
+  .slide[data-title="REFLECTION"]{grid-template-columns:minmax(440px,.82fr) minmax(620px,1.18fr);grid-template-rows:1fr;grid-template-areas:"reflection-copy reflection-art"}
+  .slide[data-title="REFLECTION"]::before{grid-area:reflection-art;background-position:center}.slide[data-title="REFLECTION"] .split{display:contents}.slide[data-title="REFLECTION"] .split>div:first-child{grid-area:reflection-copy;align-self:center}.slide[data-title="REFLECTION"] .questions{grid-area:reflection-art;z-index:1;width:min(66%,620px);align-self:end;justify-self:end;margin:0 22px 20px}.slide[data-title="REFLECTION"] .questions p{padding:16px 18px;margin:10px 0}
+}
+
+@media(min-width:851px) and (max-width:1250px){
+  .slide[data-title="MISSION"],.slide[data-title="MATERIALS"],.slide[data-title="TEAMWORK"],.slide[data-title="MEASURE"],.slide[data-title="REFLECTION"]{grid-template-columns:minmax(340px,.9fr) minmax(430px,1.1fr)}
+  .slide[data-title="MATERIALS"] .slide-heading h2{white-space:normal}
+  .slide[data-title="MATERIALS"] .materials{grid-template-columns:repeat(5,minmax(130px,1fr))}.slide[data-title="MATERIALS"] .materials button{padding:15px;min-height:165px}.slide[data-title="MATERIALS"] .materials button b{font-size:15px}
+  .slide[data-title="RULES"]{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:850px){
+  .slide[data-title="MATERIALS"] .slide-heading h2{font-size:clamp(36px,11vw,50px);line-height:1.12}.slide[data-title="MATERIALS"] .materials button{min-height:140px}
+}
