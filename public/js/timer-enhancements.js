@@ -5,13 +5,13 @@
   const controllers = new Map();
   function state() { try { return JSON.parse(localStorage.getItem(stateKey) || '{}'); } catch { return {}; } }
   function guidance(timer) {
-    const box = $('#buildGuidance'); if (!box || timer.key !== 'build') return;
+    const title = $('#buildTitle'); if (!title || timer.key !== 'build') return;
     const elapsed = timer.total - timer.remaining;
-    let message = 'タイマーを開始すると、時間に合わせて案内を表示します。', level = 'ready';
-    if (timer.remaining <= 300) { message = 'もうそろそろ、補強と架橋テストを始めてください。'; level = 'urgent'; }
-    else if (elapsed >= 900) { message = '三角形のトラス構造の強度'; level = 'important'; }
-    else if (elapsed >= 600) { message = 'もうそろそろ組み立てを始めてください。'; level = 'notice'; }
-    $('strong', box).textContent = message; box.dataset.level = level;
+    let html = '製作開始。<br><em>25分の真剣勝負。</em>', level = 'ready';
+    if (timer.remaining <= 300) { html = 'もうそろそろ、<br><em>補強と架橋テストを<br>始めてください。</em>'; level = 'urgent'; }
+    else if (elapsed >= 900) { html = '三角形のトラス構造の<br><em>強度</em>'; level = 'important'; }
+    else if (elapsed >= 600) { html = 'もうそろそろ<br><em>組み立てを始めてください。</em>'; level = 'notice'; }
+    title.innerHTML = html; title.dataset.level = level;
   }
   function install(card, total) {
     if (!card) return;

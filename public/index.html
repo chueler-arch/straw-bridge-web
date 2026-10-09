@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/illustrations.css">
   <link rel="stylesheet" href="css/illustrations-layout.css">
   <link rel="stylesheet" href="css/timer-layout.css">
+  <link rel="stylesheet" href="css/content-updates.css">
 </head>
 <body>
   <header class="app-header">
@@ -44,8 +45,8 @@
     </section>
 
     <section class="slide" data-title="TEAM">
-      <div class="slide-heading"><div><p class="eyebrow">TEAM ASSIGNMENT</p><h2 data-ja="チームを確認しよう。" data-en="Meet your team.">チームを確認しよう。</h2></div><button class="small-btn" id="shuffleBtn" type="button">↻ <span data-ja="メンバーを混ぜる" data-en="Shuffle members">メンバーを混ぜる</span></button></div>
-      <div class="teams-grid" id="teamsGrid"></div>
+      <div class="slide-heading"><div><p class="eyebrow">TEAM ASSIGNMENT</p><h2 data-ja="チームを確認しよう。" data-en="Meet your team.">チームを確認しよう。</h2></div></div>
+      <div class="teams-grid" id="teamsGrid"></div><div class="team-shuffle-row"><button class="small-btn" id="shuffleBtn" type="button">↻ <span data-ja="メンバーを混ぜる" data-en="Shuffle members">メンバーを混ぜる</span></button></div>
     </section>
 
     <section class="slide" data-title="MATERIALS">
@@ -74,11 +75,15 @@
     </section>
 
     <section class="slide dark timer-slide build-timer-slide" data-title="BUILD">
-      <div><p class="eyebrow light">BUILD TIME</p><h2 data-ja="製作開始。\n25分の真剣勝負。" data-en="Start building.\n25 minutes to win.">製作開始。<br><em>25分の真剣勝負。</em></h2></div><div class="build-timer-stack"><div class="timer-card accent" data-timer="build"><p>TIME REMAINING</p><strong class="timer-display">25:00</strong><div class="timer-track"><i></i></div><div><button data-reset-timer type="button" aria-label="タイマーをリセット">↺</button><button data-skip-timer type="button">＋30秒</button><button class="timer-toggle" type="button" data-ja="スタート" data-en="Start">スタート</button></div></div><aside class="timer-guidance" id="buildGuidance" aria-live="polite"><span>進行ガイド</span><strong>タイマーを開始すると、時間に合わせて案内を表示します。</strong></aside></div>
+      <div><p class="eyebrow light">BUILD TIME</p><h2 id="buildTitle" data-ja="製作開始。\n25分の真剣勝負。" data-en="Start building.\n25 minutes to win.">製作開始。<br><em>25分の真剣勝負。</em></h2></div><div class="build-timer-stack"><div class="timer-card accent" data-timer="build"><p>TIME REMAINING</p><strong class="timer-display">25:00</strong><div class="timer-track"><i></i></div><div><button data-reset-timer type="button" aria-label="タイマーをリセット">↺</button><button data-skip-timer type="button">＋30秒</button><button class="timer-toggle" type="button" data-ja="スタート" data-en="Start">スタート</button></div></div></div>
+    </section>
+
+    <section class="slide load-prep-slide" data-title="LOAD PREP">
+      <div class="load-prep-card"><p class="eyebrow">BEFORE THE LOAD TEST</p><span class="load-prep-icon" aria-hidden="true">↓</span><h2>橋の中央に重りを入れる<br>容器を掛けてください。</h2><p>準備ができたら、橋から手を離してください。</p><strong>中央の容器以外は触れないでください</strong></div>
     </section>
 
     <section class="slide" data-title="MEASURE">
-      <div class="slide-heading"><div><p class="eyebrow">LOAD TEST</p><h2 data-ja="強度を計測しよう。" data-en="Test every bridge.">強度を計測しよう。</h2></div><p data-ja="中央の容器におもりを順に入れ、耐えられた総重量を入力します。" data-en="Add weights to the center and enter the total load held.">中央の容器におもりを順に入れ、耐えられた総重量を入力します。</p></div><div class="measure-grid" id="measureGrid"></div><button class="primary-btn results-btn" type="button" data-next><span data-ja="順位を見る" data-en="View results">順位を見る</span> →</button>
+      <div class="slide-heading"><div><p class="eyebrow">LOAD TEST</p><h2 data-ja="強度を計測しよう。" data-en="Test every bridge.">強度を計測しよう。</h2></div><div class="measure-instructions"><p data-ja="中央の容器におもりを順に入れ、橋が耐えられた重りの数を報告してください。" data-en="Add weights to the center and report how many the bridge held.">中央の容器におもりを順に入れ、橋が耐えられた重りの数を報告してください。</p><strong>中央の容器以外は触れないでください</strong></div></div><div class="measure-grid" id="measureGrid"></div><button class="primary-btn results-btn" type="button" data-next><span data-ja="順位を見る" data-en="View results">順位を見る</span> →</button>
     </section>
 
     <section class="slide winner-slide" data-title="RESULTS">
@@ -113,5 +118,6 @@
   <script src="js/app.js"></script>
   <script src="js/app-enhancements.js"></script>
   <script src="js/timer-enhancements.js"></script>
+  <script src="js/content-updates.js"></script>
 </body>
 </html>
