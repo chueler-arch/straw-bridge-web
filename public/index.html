@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700&family=Noto+Sans+JP:wght@500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/mobile-fixes.css">
+  <link rel="stylesheet" href="css/straw-theme.css">
 </head>
 <body>
   <header class="app-header">
@@ -32,7 +33,7 @@
         <p class="hero-lead" data-ja="限られた資材で「最強の構造」を導き出せ。" data-en="Build the strongest structure with limited materials.">限られた資材で「最強の構造」を導き出せ。</p>
         <div class="hero-actions"><button class="ghost-btn" id="setupBtn" type="button">⚙ <span data-ja="事前準備" data-en="Setup">事前準備</span></button><button class="primary-btn" data-next type="button"><span data-ja="チャレンジをはじめる" data-en="Start challenge">チャレンジをはじめる</span> →</button></div>
       </div>
-      <div class="bridge-art" aria-hidden="true"><div class="bank left"></div><div class="bank right"></div><div class="bridge-deck"></div><div class="truss t1"></div><div class="truss t2"></div><div class="truss t3"></div><div class="truss t4"></div><div class="weight">1kg</div></div>
+      <div class="hero-visual" role="img" aria-label="ストローで組み上げた大きな橋と挑戦者"></div>
     </section>
 
     <section class="slide" data-title="MISSION">
@@ -94,8 +95,23 @@
 
   <footer class="nav-bar"><nav><a href="about.html" data-ja="このアプリについて" data-en="About">このアプリについて</a><a href="how-to-play.html" data-ja="遊び方" data-en="How to use">遊び方</a><a href="privacy.html" data-ja="プライバシー" data-en="Privacy">プライバシー</a><a href="terms.html" data-ja="利用規約" data-en="Terms">利用規約</a></nav><div><button id="prevBtn" type="button">←</button><button id="nextBtn" type="button"><span data-ja="次へ" data-en="Next">次へ</span> →</button></div></footer>
 
-  <dialog id="setupDialog"><form method="dialog"><header><div><p>BEFORE THE WORKSHOP</p><h2 data-ja="事前準備" data-en="Workshop setup">事前準備</h2></div><button value="close" aria-label="閉じる">×</button></header><div class="setup-body"><section><h3 data-ja="チーム・参加者" data-en="Teams & participants">チーム・参加者</h3><p data-ja="チーム名と参加者を入力してください。参加者は1行に1名です。" data-en="Enter team names and one participant per line.">チーム名と参加者を入力してください。参加者は1行に1名です。</p><div id="teamEditors"></div><button class="small-btn" id="addTeamBtn" type="button">＋ <span data-ja="チームを追加" data-en="Add team">チームを追加</span></button></section><section><h3 data-ja="時間設定" data-en="Timing">時間設定</h3><div class="settings-grid"><label><span data-ja="作戦会議" data-en="Strategy">作戦会議</span><input id="strategyMinutes" type="number" min="1" max="60"><small>min</small></label><label><span data-ja="製作時間" data-en="Build">製作時間</span><input id="buildMinutes" type="number" min="1" max="120"><small>min</small></label></div><p class="save-note" data-ja="設定と結果はこのブラウザに自動保存されます。" data-en="Settings and results are saved in this browser.">設定と結果はこのブラウザに自動保存されます。</p></section></div><footer><button class="primary-btn" id="saveSetupBtn" value="close"><span data-ja="準備完了" data-en="Save setup">準備完了</span></button></footer></form></dialog>
+  <dialog id="setupDialog"><form method="dialog"><header><div><p>BEFORE THE WORKSHOP</p><h2>事前準備</h2></div><button value="close" aria-label="事前準備を閉じる">×</button></header>
+    <div class="setup-shell"><nav class="setup-nav" aria-label="事前準備メニュー"><button type="button" data-setup-tab="0" class="active"><span>01</span>ゲームの目的</button><button type="button" data-setup-tab="1"><span>02</span>ルールと進行</button><button type="button" data-setup-tab="2"><span>03</span>運営メンバー</button><button type="button" data-setup-tab="3"><span>04</span>会場の準備</button><button type="button" data-setup-tab="4"><span>05</span>配布物準備</button><button type="button" data-setup-tab="5"><span>06</span>運営からのお願い</button><button type="button" data-setup-tab="6"><span>07</span>チーム・参加者</button><button type="button" data-setup-tab="7"><span>08</span>ゲームの設定</button></nav>
+      <div class="setup-content">
+        <section class="setup-panel active"><p class="panel-code">01 / PURPOSE</p><h3>ゲームの目的</h3><p>限られた材料と時間の中で、チームで試行錯誤しながら、できるだけ強い自立式の橋をつくります。</p><div class="prep-cards"><article><b>協働</b><p>役割を決め、アイデアを共有しながら一つの成果をつくる。</p></article><article><b>試行錯誤</b><p>小さく試し、失敗から学び、制限時間内に改善する。</p></article><article><b>振り返り</b><p>結果だけでなく、チームの進め方と意思決定から学ぶ。</p></article></div></section>
+        <section class="setup-panel"><p class="panel-code">02 / RULES &amp; FLOW</p><h3>ルール説明と進行方法</h3><div class="flow-list"><article><span>01</span><div><b>導入・チーム分け</b><p>目的を伝え、登録したチームで活動を始めます。</p></div></article><article><span>02</span><div><b>備品・ルール確認</b><p>資材を配り、3つの基本ルールを全員で確認します。</p></div></article><article><span>03</span><div><b>作戦と製作</b><p>作戦タイムの後、設定した時間で橋を製作します。</p></div></article><article><span>04</span><div><b>耐荷重テスト</b><p>中央へ少しずつ荷重をかけ、耐えた重量を記録します。</p></div></article><article><span>05</span><div><b>振り返り・共有</b><p>構造とチームワークの両面から学びを共有します。</p></div></article></div></section>
+        <section class="setup-panel"><p class="panel-code">03 / STAFF</p><h3>運営メンバー</h3><div class="prep-cards"><article><b>進行役</b><p>画面を操作し、ルール説明とゲーム全体の進行を担当します。</p></article><article><b>計測担当</b><p>おもりを安全に追加し、各チームの耐荷重を記録します。</p></article><article><b>安全・撮影係</b><p>テスト中の安全を見守り、振り返り用の記録を残します。</p></article></div></section>
+        <section class="setup-panel"><p class="panel-code">04 / VENUE</p><h3>会場の準備</h3><div class="check-list"><article><span>01</span><div><b>各机のチーム名表示</b><p>チームごとに独立した作業机を用意し、十分な間隔を空けます。</p></div></article><article><span>02</span><b>20cmの間隔を作れる同じ高さの台・机</b></article><article><span>03</span><b>床面保護シートと立入禁止ライン</b></article><article><span>04</span><b>撮影用カメラ</b></article><article><span>05</span><div><b>大型モニター または プロジェクター</b><p>参加者全員がこのアプリを見られる位置に設置します。</p></div></article></div></section>
+        <section class="setup-panel"><p class="panel-code">05 / TEAM KITS</p><h3>各チームへの配布物準備</h3><p>チームごとに下記を用意してください。</p><div class="kit-grid"><article><span>ストロー</span><strong>30本</strong></article><article><span>セロハンテープ</span><strong>1巻</strong></article><article><span>ハサミ</span><strong>2丁</strong></article><article><span>メジャー</span><strong>1個</strong></article><article><span>S字フック・容器・おもり</span><strong>1式</strong></article></div><p>配りやすいよう、チームごとにトレーや袋へまとめてください。</p></section>
+        <section class="setup-panel"><p class="panel-code">06 / A REQUEST FROM US</p><h3>運営からのお願い</h3><div class="prep-cards"><article><b>任意のご支援について</b><p>このアプリが役に立ちましたら、運営・改善へのご支援をご検討ください。利用条件ではありません。</p><a href="mailto:chueler@gmail.com?subject=ストローブリッジ支援について">SONA CRAFTへメール</a></article><article><b>活用事例をお寄せください</b><p>公開可能な実施写真や感想を、ぜひお送りください。</p><a href="mailto:chueler@gmail.com?subject=ストローブリッジ活用事例">活用事例をメールで送る</a></article></div></section>
+        <section class="setup-panel"><p class="panel-code">07 / TEAMS &amp; MEMBERS</p><h3>チームと参加者の登録</h3><p>1チーム3～5名を基本としてください。参加者は1行に1名です。</p><div id="teamEditors"></div><div class="team-tools"><button class="small-btn" id="addTeamBtn" type="button">＋ チームを追加する</button><button class="small-btn" id="setupShuffleBtn" type="button">↻ 全参加者を再振り分け</button></div><p id="teamSummary" class="save-note"></p></section>
+        <section class="setup-panel"><p class="panel-code">08 / GAME SETTINGS</p><h3>ゲームの設定</h3><div class="settings-grid"><label><span>作戦会議</span><input id="strategyMinutes" type="number" min="1" max="60"><small>分</small></label><label><span>製作時間</span><input id="buildMinutes" type="number" min="1" max="120"><small>分</small></label></div><div class="file-tools"><h4>ゲーム設定ファイル</h4><p>CSVにはゲーム設定、チーム名、各チームの参加者が保存されます。</p><div><button class="small-btn" id="exportSetupBtn" type="button">↓ CSVダウンロード</button><button class="small-btn" id="importSetupBtn" type="button">↑ CSVインポート</button><input id="importSetupFile" type="file" accept=".csv,text/csv" hidden></div></div></section>
+        <p class="autosave-note">変更内容はこのブラウザに自動保存されます</p>
+      </div></div>
+    <footer><button class="small-btn" id="setupPrevBtn" type="button">← 戻る</button><span id="setupStep">01 / 08</span><button class="primary-btn" id="setupNextBtn" type="button">次へ →</button><button class="primary-btn" id="saveSetupBtn" value="close" hidden>準備完了</button></footer>
+  </form></dialog>
   <div class="toast" id="toast" role="status"></div><div class="confetti" id="confetti" aria-hidden="true"></div>
   <script src="js/app.js"></script>
+  <script src="js/app-enhancements.js"></script>
 </body>
 </html>
