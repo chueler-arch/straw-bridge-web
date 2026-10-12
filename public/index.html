@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="css/timer-layout.css">
   <link rel="stylesheet" href="css/content-updates.css">
   <link rel="stylesheet" href="css/projector.css">
+  <link rel="stylesheet" href="css/celebration.css">
 </head>
 <body>
   <header class="app-header">
@@ -89,7 +90,11 @@
     </section>
 
     <section class="slide" data-title="REFLECTION">
-      <div class="split"><div><p class="eyebrow">REFLECTION / PDCA</p><h2 data-ja="つくった後が、\nいちばん大事。" data-en="Learning begins\nafter building.">つくった後が、<br><em>いちばん大事。</em></h2><p class="lead" data-ja="チームで振り返り、気づきを共有しましょう。" data-en="Reflect as a team and share what you learned.">チームで振り返り、気づきを共有しましょう。</p></div><div class="questions"><p><span>01</span><b data-ja="短い時間で、どう意見をまとめた？" data-en="How did you make decisions quickly?">短い時間で、どう意見をまとめた？</b></p><p><span>02</span><b data-ja="途中の問題に、どう軌道修正した？" data-en="How did you respond to problems?">途中の問題に、どう軌道修正した？</b></p><p><span>03</span><b data-ja="次に試すなら、何を変える？" data-en="What would you change next time?">次に試すなら、何を変える？</b></p></div></div>
+      <div class="split"><div><p class="eyebrow">REFLECTION / PDCA</p><h2 data-ja="つくった後が、\nいちばん大事。" data-en="Learning begins\nafter building.">つくった後が、<br><em>いちばん大事。</em></h2><p class="lead" data-ja="チームで振り返り、気づきを共有しましょう。" data-en="Reflect as a team and share what you learned.">チームで振り返り、気づきを共有しましょう。</p><div class="timer-card reflection-timer" data-timer="reflection"><p>REFLECTION</p><strong class="timer-display">05:00</strong><div class="timer-track"><i></i></div><div><button data-reset-timer type="button" aria-label="タイマーをリセット">↺</button><button data-skip-timer type="button">＋30秒</button><button class="timer-toggle" type="button">スタート</button></div></div></div><div class="questions"><p><span>01</span><b data-ja="短い時間で、どう意見をまとめた？" data-en="How did you make decisions quickly?">短い時間で、どう意見をまとめた？</b></p><p><span>02</span><b data-ja="途中の問題に、どう軌道修正した？" data-en="How did you respond to problems?">途中の問題に、どう軌道修正した？</b></p><p><span>03</span><b data-ja="次に試すなら、何を変える？" data-en="What would you change next time?">次に試すなら、何を変える？</b></p></div></div>
+    </section>
+
+    <section class="slide presentation-slide" data-title="PRESENTATION">
+      <div><p class="eyebrow">TEAM PRESENTATION</p><h2>各チームで<br><em>発表しよう。</em></h2><p class="lead">結果だけでなく、考えたこと・工夫したこと・学んだことを共有します。</p></div><div class="presentation-cards"><article><span>01</span><h3>橋の工夫</h3><p>どんな構造を選び、どこを補強しましたか？</p></article><article><span>02</span><h3>チームの動き</h3><p>役割分担や意思決定で工夫したことは？</p></article><article><span>03</span><h3>次に変えること</h3><p>もう一度つくるなら、何を改善しますか？</p></article></div><strong class="presentation-time">1チーム 1分</strong>
     </section>
 
     <section class="slide finish" data-title="FINISH"><div><p class="eyebrow">CHALLENGE COMPLETE</p><h2 data-ja="おつかれさまでした！" data-en="Great work!">おつかれさまでした！</h2><p data-ja="今日の気づきを、次のチーム活動へ。" data-en="Carry today's learning into your next team challenge.">今日の気づきを、次のチーム活動へ。</p><button class="ghost-btn" id="restartBtn" type="button"><span data-ja="最初に戻る" data-en="Back to start">最初に戻る</span> ↺</button></div></section>
@@ -119,5 +124,6 @@
   <script src="js/app-enhancements.js"></script>
   <script src="js/timer-enhancements.js"></script>
   <script src="js/content-updates.js"></script>
+  <script src="js/confetti-burst.js"></script>
 </body>
 </html>
