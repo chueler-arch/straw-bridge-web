@@ -3,11 +3,22 @@
   const host = document.querySelector('#confetti');
   if (!host) return;
   let scheduled = false;
-  let running = false;
+  const applause = new Audio('audio/Applause04-2%28Mid%29.mp3');
+  applause.preload = 'auto';
+
+  function playApplause() {
+    let sound = true;
+    try {
+      sound = JSON.parse(localStorage.getItem('straw-bridge-state-v1') || '{}').sound !== false;
+    } catch {}
+    if (!sound) return;
+    applause.pause();
+    applause.currentTime = 0;
+    applause.play().catch(() => {});
+  }
 
   function launch() {
-    if (running) return;
-    running = true;
+    playApplause();
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const canvas = document.createElement('canvas');
     canvas.className = 'celebration-canvas';
@@ -98,7 +109,6 @@
       else {
         removeEventListener('resize', resize);
         canvas.remove();
-        running = false;
       }
     }
     requestAnimationFrame(draw);
@@ -106,11 +116,13 @@
 
   new MutationObserver(records => {
     const added = records.some(record => [...record.addedNodes].some(node => node.nodeName === 'I'));
-    if (!added || scheduled || running) return;
+    if (!added || scheduled) return;
     scheduled = true;
     setTimeout(() => {
       scheduled = false;
       launch();
     }, 1150);
   }).observe(host, { childList: true });
+
+  window.strawBridgeCelebrate = launch;
 })();
