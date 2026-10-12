@@ -1,0 +1,28 @@
+/* Projector-first readability */
+@media(min-width:851px){
+  .slide{padding-left:clamp(46px,5vw,110px);padding-right:clamp(46px,5vw,110px)}
+  .eyebrow{font-size:14px}.lead{font-size:clamp(21px,1.7vw,30px)}
+
+  .slide[data-title="TEAM"]{align-content:center}.slide[data-title="TEAM"] .slide-heading{margin-bottom:26px}.slide[data-title="TEAM"] .slide-heading h2{font-size:clamp(48px,4.4vw,78px)}
+  .team-shuffle-row{justify-content:flex-start;margin-top:18px}.team-shuffle-row .small-btn{min-width:260px;padding:16px 26px;font-size:18px}
+  .teams-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}.team-card{padding:26px 28px}.team-card header b{font-size:42px}.team-card header span{font-size:15px;font-weight:800}.team-card h3{font-size:28px;margin:18px 0 10px}.team-card ul{font-size:21px;line-height:1.75;margin-bottom:0}
+
+  .slide[data-title="MATERIALS"]{grid-template-columns:minmax(480px,.86fr) minmax(600px,1.14fr)}.slide[data-title="MATERIALS"] .materials{grid-template-columns:repeat(5,minmax(205px,1fr))}.slide[data-title="MATERIALS"] .materials button{min-height:210px;padding:22px 24px}.slide[data-title="MATERIALS"] .materials button span{font-size:14px}.slide[data-title="MATERIALS"] .materials button b{font-size:22px;line-height:1.4}.slide[data-title="MATERIALS"] .materials button strong{font-size:52px}.slide[data-title="MATERIALS"] .materials button small{font-size:17px}
+
+  .slide[data-title="RULES"]{grid-template-columns:minmax(380px,.65fr) minmax(700px,1.35fr);grid-template-rows:auto 1fr;grid-template-areas:"rules-title rules-list" "rules-art rules-list";column-gap:clamp(34px,4vw,74px)}
+  .slide[data-title="RULES"]>div{grid-area:rules-title;align-self:start;margin:0;width:100%!important;max-width:none}.slide[data-title="RULES"]::before{grid-area:rules-art;width:82%;justify-self:center;background-size:contain;background-repeat:no-repeat;background-position:center top;border:0;box-shadow:none}.slide[data-title="RULES"] .rule-list{font-size:20px;padding:18px 34px}.slide[data-title="RULES"] .rule-list li{grid-template-columns:72px 1fr;gap:20px;padding:25px 0}.slide[data-title="RULES"] .rule-list span{font-size:34px}.slide[data-title="RULES"] .rule-list b{font-size:26px}.slide[data-title="RULES"] .rule-list p{font-size:19px;line-height:1.65;margin-top:9px}
+
+  .mission-card strong{font-size:28px}.mission-card p{font-size:21px}.principles article{padding:28px 32px}.principles span{font-size:54px}.principles h3{font-size:28px}.principles p{font-size:20px;line-height:1.7}.timer-slide ul{font-size:22px;line-height:2.05}
+  .measure-card{padding:26px}.measure-card header{font-size:21px}.score-entry input{font-size:54px}.score-entry span{font-size:21px}.measure-instructions p{font-size:21px}.measure-instructions strong{font-size:19px}
+  .questions p{grid-template-columns:64px 1fr;padding:24px}.questions span{font-size:32px}.questions b{font-size:21px;line-height:1.55}.podium article span{font-size:15px}.podium article h3{font-size:25px}.podium article strong{font-size:40px}
+}
+
+@media(min-width:851px) and (max-width:1300px){
+  .teams-grid{grid-template-columns:repeat(2,1fr)}.team-card ul{font-size:18px}
+  .slide[data-title="MATERIALS"] .materials{grid-template-columns:repeat(5,minmax(140px,1fr))}.slide[data-title="MATERIALS"] .materials button{padding:17px}.slide[data-title="MATERIALS"] .materials button b{font-size:18px}
+  .slide[data-title="RULES"]{grid-template-columns:.72fr 1.28fr}.slide[data-title="RULES"] .rule-list b{font-size:22px}.slide[data-title="RULES"] .rule-list p{font-size:17px}
+}
+
+@media(max-width:850px){
+  .team-shuffle-row{justify-content:flex-start}.team-card h3{font-size:24px}.team-card ul{font-size:18px}.materials button b{font-size:20px}.materials button strong{font-size:48px}.rule-list b{font-size:21px}.rule-list p,.principles p,.questions b{font-size:17px}
+}
