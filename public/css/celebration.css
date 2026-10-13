@@ -23,9 +23,9 @@
   .winner-slide{position:relative;padding-bottom:76px!important}
   .winner-slide .podium{position:absolute;left:7vw;right:7vw;bottom:76px;width:auto;max-width:1260px;margin:0 auto;align-items:flex-end}
   .winner-slide .podium article{transform-origin:center bottom;animation-name:podium-rise-floor!important;animation-duration:.85s!important;animation-timing-function:cubic-bezier(.18,.82,.22,1)!important;animation-fill-mode:both!important;--finish-lift:0px}
-  .winner-slide .podium article:nth-child(3){animation-delay:.12s!important}
-  .winner-slide .podium article:nth-child(2){animation-delay:.52s!important}
-  .winner-slide .podium article:nth-child(1){animation-delay:.92s!important;--finish-lift:-20px}
+  .winner-slide .podium article:nth-child(3){height:clamp(350px,39vh,520px);min-height:0!important;animation-delay:.12s!important}
+  .winner-slide .podium article:nth-child(2){height:clamp(400px,44vh,590px);min-height:0!important;animation-delay:.52s!important}
+  .winner-slide .podium article:nth-child(1){height:clamp(480px,52vh,690px);min-height:0!important;animation-delay:.92s!important;--finish-lift:0px}
 }
 @media(max-width:850px){.presentation-visual{height:auto;aspect-ratio:29/16;background:#fff}.presentation-visual img{object-fit:contain;object-position:center center}}
 @keyframes podium-rise-floor{0%{opacity:0;transform:translateY(calc(100% + 90px)) scaleY(.18)}55%{opacity:1}100%{opacity:1;transform:translateY(var(--finish-lift)) scaleY(1)}}
