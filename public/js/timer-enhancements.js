@@ -30,10 +30,15 @@
   function guidance(timer) {
     const title = $('#buildTitle'); if (!title || timer.key !== 'build') return;
     const elapsed = timer.total - timer.remaining;
-    let html = '製作開始。<br><em>25分の真剣勝負。</em>', level = 'ready';
-    if (timer.remaining <= 300) { html = 'もうそろそろ、<br><em>補強と架橋テストを<br>始めてください。</em>'; level = 'urgent'; }
-    else if (elapsed >= 900) { html = '三角形のトラス構造の<br><em>強度</em>'; level = 'important'; }
-    else if (elapsed >= 600) { html = 'もうそろそろ<br><em>組み立てを始めてください。</em>'; level = 'notice'; }
+    const progress = timer.total ? elapsed / timer.total * 100 : 0;
+    const saved = state();
+    const noticeAt = Math.max(1, Math.min(99, Number(saved.buildNoticePercent) || 40));
+    const importantAt = Math.max(1, Math.min(99, Number(saved.buildImportantPercent) || 60));
+    const urgentAt = Math.max(1, Math.min(99, Number(saved.buildUrgentPercent) || 80));
+    let html = `製作開始。<br><em>${Math.round(timer.total / 60)}分の真剣勝負。</em>`, level = 'ready';
+    if (progress >= urgentAt) { html = 'もうそろそろ、<br><em>補強と架橋テストを<br>始めてください。</em>'; level = 'urgent'; }
+    else if (progress >= importantAt) { html = '三角形のトラス構造の<br><em>強度</em>'; level = 'important'; }
+    else if (progress >= noticeAt) { html = 'もうそろそろ<br><em>組み立てを始めてください。</em>'; level = 'notice'; }
     title.innerHTML = html; title.dataset.level = level;
     if (timer.lastGuidance == null) timer.lastGuidance = level;
     else if (timer.lastGuidance !== level) {
@@ -50,12 +55,14 @@
     const stop = () => { if (timer.id) clearInterval(timer.id); timer.id = null; timer.running = false; paint(); };
     const tick = seconds => { const wasRunning = timer.remaining > 0; timer.remaining = Math.max(0, timer.remaining - seconds); if (timer.remaining === 0) { stop(); if (wasRunning) whistle('finish'); } else paint(); };
     toggle.onclick = () => { primeWhistles(); if (timer.remaining === 0) { timer.remaining = timer.total; timer.lastGuidance = null; } timer.running = !timer.running; if (timer.running) timer.id = setInterval(() => tick(1), 1000); else stop(); paint(); };
-    $('[data-reset-timer]', card).onclick = () => { stop(); timer.remaining = timer.total; timer.lastGuidance = null; paint(); };
+    timer.reset = () => { stop(); timer.remaining = timer.total; timer.lastGuidance = null; paint(); };
+    $('[data-reset-timer]', card).onclick = timer.reset;
     $('[data-skip-timer]', card).onclick = () => tick(30);
     paint();
   }
-  function installAll() { const saved = state(); install($('[data-timer="strategy"]'), Math.max(1, Number(saved.strategyMinutes) || 5) * 60); install($('[data-timer="build"]'), Math.max(1, Number(saved.buildMinutes) || 25) * 60); install($('[data-timer="reflection"]'), 5 * 60); }
+  function installAll() { const saved = state(); install($('[data-timer="strategy"]'), Math.max(1, Number(saved.strategyMinutes) || 5) * 60); install($('[data-timer="build"]'), Math.max(1, Number(saved.buildMinutes) || 25) * 60); install($('[data-timer="reflection"]'), Math.max(1, Number(saved.reflectionMinutes) || 5) * 60); install($('[data-timer="presentation"]'), Math.max(1, Number(saved.presentationMinutes) || 1) * 60); }
   $('#langBtn').addEventListener('click', () => setTimeout(installAll));
   $('#saveSetupBtn').addEventListener('click', () => setTimeout(installAll));
+  document.addEventListener('strawbridge:reset-timer', event => controllers.get(event.detail?.key)?.reset?.());
   installAll();
 })();

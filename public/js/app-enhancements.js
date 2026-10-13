@@ -3,6 +3,15 @@
   const $ = (s, p = document) => p.querySelector(s);
   const $$ = (s, p = document) => [...p.querySelectorAll(s)];
   const KEY = 'straw-bridge-state-v1';
+  const settingDefaults = {
+    strategyMinutes: 5,
+    buildMinutes: 25,
+    reflectionMinutes: 5,
+    presentationMinutes: 1,
+    buildNoticePercent: 40,
+    buildImportantPercent: 60,
+    buildUrgentPercent: 80
+  };
   let setupStep = 0;
 
   function repairLineBreaks(root = document) {
@@ -40,6 +49,14 @@
     try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch { return {}; }
   }
 
+  function loadSettings() {
+    const state = readState();
+    Object.entries(settingDefaults).forEach(([key, fallback]) => {
+      const input = $('#' + key);
+      if (input) input.value = Number(state[key]) || fallback;
+    });
+  }
+
   function collectDraft() {
     const state = readState();
     const editors = $$('[data-editor]');
@@ -47,8 +64,11 @@
       name: $('[data-name]', row).value.trim() || `${String.fromCharCode(65 + i)}チーム`,
       members: $('[data-members]', row).value.split(/\r?\n/).map(v => v.trim()).filter(Boolean)
     }));
-    state.strategyMinutes = Math.max(1, Number($('#strategyMinutes')?.value) || state.strategyMinutes || 5);
-    state.buildMinutes = Math.max(1, Number($('#buildMinutes')?.value) || state.buildMinutes || 25);
+    Object.entries(settingDefaults).forEach(([key, fallback]) => {
+      const input = $('#' + key);
+      const maximum = key.endsWith('Percent') ? 99 : Number(input?.max) || 120;
+      state[key] = Math.max(1, Math.min(maximum, Number(input?.value) || state[key] || fallback));
+    });
     state.scores = (state.teams || []).map((_, i) => state.scores?.[i] || 0);
     localStorage.setItem(KEY, JSON.stringify(state));
     return state;
@@ -57,7 +77,7 @@
   const csvCell = value => `"${String(value ?? '').replace(/"/g, '""')}"`;
   function exportCsv() {
     const state = collectDraft();
-    const rows = [['type','key','value'],['setting','strategyMinutes',state.strategyMinutes],['setting','buildMinutes',state.buildMinutes]];
+    const rows = [['type','key','value'], ...Object.keys(settingDefaults).map(key => ['setting', key, state[key]])];
     (state.teams || []).forEach((team, index) => {
       rows.push(['team', index, team.name]);
       (team.members || []).forEach(member => rows.push(['member', index, member]));
@@ -87,7 +107,7 @@
     const rows = parseCsv((await file.text()).replace(/^\uFEFF/, '')).slice(1);
     const state = readState(), teams = [];
     rows.forEach(([type, key, value]) => {
-      if (type === 'setting' && ['strategyMinutes','buildMinutes'].includes(key)) state[key] = Math.max(1, Number(value) || 1);
+      if (type === 'setting' && Object.hasOwn(settingDefaults, key)) state[key] = Math.max(1, Math.min(key.endsWith('Percent') ? 99 : 120, Number(value) || settingDefaults[key]));
       if (type === 'team') teams[Number(key)] = { name: value || `${Number(key)+1}チーム`, members: [] };
       if (type === 'member') { const i = Number(key); teams[i] ||= { name: `${i+1}チーム`, members: [] }; teams[i].members.push(value); }
     });
@@ -102,7 +122,7 @@
   $$('[data-setup-tab]').forEach(button => button.addEventListener('click', () => showSetupStep(Number(button.dataset.setupTab))));
   $('#setupPrevBtn').addEventListener('click', () => showSetupStep(setupStep - 1));
   $('#setupNextBtn').addEventListener('click', () => showSetupStep(setupStep + 1));
-  $('#setupBtn').addEventListener('click', () => setTimeout(() => showSetupStep(0)));
+  $('#setupBtn').addEventListener('click', () => setTimeout(() => { loadSettings(); showSetupStep(0); }));
   $('#teamEditors').addEventListener('input', updateSummary);
   $('#addTeamBtn').addEventListener('click', () => setTimeout(updateSummary));
   $('#setupShuffleBtn').addEventListener('click', () => {
@@ -115,8 +135,7 @@
   $('#exportSetupBtn').addEventListener('click', exportCsv);
   $('#importSetupBtn').addEventListener('click', () => $('#importSetupFile').click());
   $('#importSetupFile').addEventListener('change', event => { const file = event.target.files[0]; if (file) importCsv(file).catch(error => alert(`CSVを読み込めませんでした：${error.message}`)); });
-  $('#strategyMinutes').addEventListener('change', collectDraft);
-  $('#buildMinutes').addEventListener('change', collectDraft);
+  Object.keys(settingDefaults).forEach(key => $('#' + key)?.addEventListener('change', collectDraft));
   new MutationObserver(() => repairLineBreaks()).observe($('#deck'), { childList: true, subtree: true, characterData: true });
-  repairLineBreaks(); showSetupStep(0);
+  loadSettings(); repairLineBreaks(); showSetupStep(0);
 })();

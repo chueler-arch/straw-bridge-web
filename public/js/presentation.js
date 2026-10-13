@@ -34,6 +34,7 @@
       item.textContent = member;
       memberList.appendChild(item);
     });
+    document.dispatchEvent(new CustomEvent('strawbridge:reset-timer', { detail: { key: 'presentation' } }));
   }
 
   function render() {
