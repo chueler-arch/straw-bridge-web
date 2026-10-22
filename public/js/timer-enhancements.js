@@ -53,7 +53,7 @@
     const display = $('.timer-display', card), bar = $('.timer-track i', card), toggle = $('.timer-toggle', card);
     const paint = () => { display.textContent = `${String(Math.floor(timer.remaining / 60)).padStart(2,'0')}:${String(timer.remaining % 60).padStart(2,'0')}`; bar.style.width = `${timer.total ? timer.remaining / timer.total * 100 : 0}%`; toggle.textContent = timer.running ? '一時停止' : 'スタート'; guidance(timer); };
     const stop = () => { if (timer.id) clearInterval(timer.id); timer.id = null; timer.running = false; paint(); };
-    const tick = seconds => { const wasRunning = timer.remaining > 0; timer.remaining = Math.max(0, timer.remaining - seconds); if (timer.remaining === 0) { stop(); if (wasRunning) whistle('finish'); } else paint(); };
+    const tick = seconds => { const wasRunning = timer.remaining > 0; timer.remaining = Math.max(0, timer.remaining - seconds); if (timer.remaining === 0) { stop(); if (wasRunning) { whistle('finish'); window.dispatchEvent(new Event('sona-game-completed')); } } else paint(); };
     toggle.onclick = () => { primeWhistles(); if (timer.remaining === 0) { timer.remaining = timer.total; timer.lastGuidance = null; } timer.running = !timer.running; if (timer.running) timer.id = setInterval(() => tick(1), 1000); else stop(); paint(); };
     timer.reset = () => { stop(); timer.remaining = timer.total; timer.lastGuidance = null; paint(); };
     $('[data-reset-timer]', card).onclick = timer.reset;
